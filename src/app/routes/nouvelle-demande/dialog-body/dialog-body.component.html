@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>{{'dialog.title' | translate}}</h2>
+
+<mat-dialog-content>
+
+<p>{{'dialog.msg' | translate}} </p>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button  mat-button color="primary"  (click)="close()">{{'dialog.close' | translate}}</button>
+
+    <a mat-button color="accent" (click)="close()" routerLink="/mesdemandes" routerLinkActive="active">{{'dialog.gotoorder' | translate}}</a>
+</mat-dialog-actions>

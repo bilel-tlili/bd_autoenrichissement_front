@@ -1,0 +1,307 @@
+<breadcrumb></breadcrumb>
+<mat-card class="right-card">
+  <mat-card-subtitle>
+    List of Orders
+  </mat-card-subtitle>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+
+    <div class="mat-elevation-z812" style="overflow-x: auto; ">
+      <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
+      </mat-form-field>
+      <table mat-table [dataSource]="dataSource">
+        <ng-container [matColumnDef]="column" *ngFor="let column of Columns">
+          <div *ngIf="column != 'actions'">
+            <th mat-header-cell [hidden]="column === result" *matHeaderCellDef>
+              {{column | translate}} </th>
+            <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+          </div>
+          <div *ngIf="column === 'actions'">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+              <button *ngIf="element.statut === 'Termine'" mat-menu-item (click)="showDetails(element)">
+                <mat-icon>info</mat-icon>
+                <span>Détails</span>
+              </button>
+
+            </td>
+          </div>
+
+
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="Columns"> </tr>
+        <tr mat-row *matRowDef="let row; columns: Columns;"></tr>
+      </table>
+    </div>
+    <mat-paginator [pageSizeOptions]="[3, 5, 10, 20]" [length]="this.Orders.length"
+                   showFirstLastButtons></mat-paginator>
+
+  </mat-card-content>
+</mat-card>
+<div *ngIf="!hideresult">
+  <mat-card class="right-card">
+    <mat-card-title style="font-size : 15px">
+      AUDIT {{media | uppercase}}
+    </mat-card-title>
+    <mat-card-subtitle>
+      ID {{id}} | fichier {{fichier}}
+    </mat-card-subtitle>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <div *ngIf="media === 'email' ">
+        <table style="width: 100%;" id="result">
+
+          <tr>
+            <td>
+              Lignes en Entrees
+            </td>
+            <td>
+              Lignes Valide RNVP
+            </td>
+
+            <td>
+              Personnes avec Email
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              {{this.result.Lignes_en_entree | number:'1.0-0' }}
+            </td>
+            <td>
+              {{this.result.Valide_RNVP | number }}
+            </td>
+            <td>
+              {{this.result.Personnes_avec_Email | number}}
+            </td>
+          </tr>
+          <tr>
+            <td>
+
+            </td>
+            <td>
+              {{this.result.Valide_RNVPPercent}} %
+            </td>
+            <td>
+              {{this.result.Personnes_avec_EmailPercent}} %
+            </td>
+          </tr>
+        </table>
+
+
+      </div>
+      <div *ngIf="media === 'telephone'  " class="container_stats">
+        <mat-card class="stats-card">
+
+          <mat-card-subtitle>Stats Globales</mat-card-subtitle>
+          <mat-divider></mat-divider>
+          <mat-card-content>
+            <table style="width: 100%;" id="result">
+
+
+
+
+              <tr>
+                <td> Lignes en entrée</td>
+                <td> {{this.result.STATS_GLOB.Lignes_en_entree}} </td>
+              </tr>
+              <tr>
+                <td> Valide RNVP</td>
+                <td> {{this.result.STATS_GLOB.Valide_RNVP}} </td>
+                <td> {{this.result.STATS_GLOB.Valide_RNVPPercent}} % </td>
+              </tr>
+              <tr>
+                <td> Téléphone</td>
+                <td> {{this.result.STATS_GLOB.Telephones}} </td>
+                <td> {{this.result.STATS_GLOB.TelephonesPercent}} %</td>
+              </tr>
+              <tr>
+                <td> Téléphone actif</td>
+                <td> {{this.result.STATS_GLOB.Actifs}} </td>
+                <td> {{this.result.STATS_GLOB.ActifsPercent}} %</td>
+              </tr>
+              <tr>
+                <td> Fixe</td>
+                <td> {{this.result.STATS_AAA.F_P_F.TOTAL_FIXE_FID_PF}} </td>
+                <td> {{this.result.STATS_GLOB.FixePercent}} % </td>
+              </tr>
+              <tr>
+                <td> Fixe Actif</td>
+                <td> {{this.result.STATS_AAA.A_P_F.TOTAL_FIXE_ACTIF_PF}} </td>
+                <td> {{this.result.STATS_GLOB.FixeActifPercent}} % </td>
+              </tr>
+              <tr>
+                <td> Mobile</td>
+                <td> {{this.result.STATS_AAA.F_P_M.TOTAL_MOBI_FID_PM}} </td>
+                <td> {{this.result.STATS_GLOB.MobilePercent}} % </td>
+              </tr>
+              <tr>
+                <td> Mobile Actif</td>
+                <td>{{this.result.STATS_AAA.A_P_M.TOTAL_MOBI_ACTIF_PM}}</td>
+                <td> {{this.result.STATS_GLOB.MobileActifPercent}} % </td>
+              </tr>
+              <tr>
+                <td> SMS Optin</td>
+                <td> {{this.result.STATS_GLOB.Sms}} </td>
+                <td> {{this.result.STATS_GLOB.SmsPercent}} %</td>
+              </tr>
+            </table>
+          </mat-card-content>
+        </mat-card>
+
+
+        <mat-card class="stats-card">
+
+          <mat-card-subtitle> Comptage Actif </mat-card-subtitle>
+          <mat-divider></mat-divider>
+          <mat-card-content>
+            <table style="width: 100%;" id="result">
+              <tr>
+                <td> Priorité Mobile</td>
+              </tr>
+              <tr>
+                <td> Enrichissement</td>
+                <td> Amabis </td>
+                <td> OptinData </td>
+                <td> Total </td>
+              </tr>
+
+              <tr>
+                <td> Tél Fixe</td>
+                <td>{{this.result.STATS_AAA.A_P_M.AMA_FIXE_ACTIF_PM}} </td>
+                <td> {{this.result.STATS_AAA.A_P_M.OPD_FIXE_ACTIF_PM}} </td>
+                <td> {{this.result.STATS_AAA.A_P_M.TOTAL_FIXE_ACTIF_PM}} </td>
+              </tr>
+              <tr>
+                <td> Mobile</td>
+                <td> {{this.result.STATS_AAA.A_P_M.AMA_MOBI_ACTIF_PM}} </td>
+                <td> {{this.result.STATS_AAA.A_P_M.OPD_MOBI_ACTIF_PM}} </td>
+                <td> {{this.result.STATS_AAA.A_P_M.TOTAL_MOBI_ACTIF_PM}} </td>
+              </tr>
+              <tr>
+                <td> Total</td>
+                <td> {{this.result.STATS_AAA.A_P_M.TOTAL_TEL_AMA_ACTIF_PM}} </td>
+                <td> {{this.result.STATS_AAA.A_P_M.TOTAL_TEL_OPD_ACTIF_PM}} </td>
+                <td> {{this.result.STATS_AAA.TOTAL_ACTIF_PM }}</td>
+              </tr>
+            </table>
+            <table style="width: 100%;" id="result">
+              <tr>
+                <td> Priorité Fixe</td>
+              </tr>
+              <tr>
+                <td> Enrichissement</td>
+                <td> Amabis </td>
+                <td> OptinData </td>
+                <td> Total </td>
+              </tr>
+
+              <tr>
+                <td> Tél Fixe</td>
+                <td> {{this.result.STATS_AAA.A_P_F.AMA_FIXE_ACTIF_PF}} </td>
+                <td> {{this.result.STATS_AAA.A_P_F.OPD_FIXE_ACTIF_PF}} </td>
+                <td> {{this.result.STATS_AAA.A_P_F.TOTAL_FIXE_ACTIF_PF}} </td>
+              </tr>
+              <tr>
+                <td> Mobile</td>
+                <td> {{this.result.STATS_AAA.A_P_F.AMA_MOBI_ACTIF_PF}} </td>
+                <td> {{this.result.STATS_AAA.A_P_F.OPD_MOBI_ACTIF_PF}} </td>
+                <td> {{this.result.STATS_AAA.A_P_F.TOTAL_MOBI_ACTIF_PF}} </td>
+              </tr>
+              <tr>
+                <td> Total</td>
+                <td> {{this.result.STATS_AAA.A_P_F.TOTAL_TEL_AMA_ACTIF_PF}} </td>
+                <td> {{this.result.STATS_AAA.A_P_F.TOTAL_TEL_OPD_ACTIF_PF}} </td>
+                <td> {{this.result.STATS_AAA.TOTAL_ACTIF_PF}}</td>
+              </tr>
+            </table>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="stats-card">
+
+          <mat-card-subtitle> Comptage Fidelisation</mat-card-subtitle>
+          <mat-divider></mat-divider>
+          <mat-card-content>
+            <table style="width: 100%;" id="result">
+              <tr>
+                <td> Priorité Mobile</td>
+              </tr>
+              <tr>
+                <td> Enrichissement</td>
+                <td> Amabis </td>
+                <td> OptinData </td>
+                <td> Total </td>
+              </tr>
+
+              <tr>
+                <td> Tél Fixe</td>
+                <td>{{this.result.STATS_AAA.F_P_M.AMA_FIXE_FID_PM}} </td>
+                <td> {{this.result.STATS_AAA.F_P_M.OPD_FIXE_FID_PM}} </td>
+                <td> {{this.result.STATS_AAA.F_P_M.TOTAL_FIXE_FID_PM}} </td>
+              </tr>
+              <tr>
+                <td> Mobile</td>
+                <td> {{this.result.STATS_AAA.F_P_M.AMA_MOBI_FID_PM}} </td>
+                <td> {{this.result.STATS_AAA.F_P_M.OPD_MOBI_FID_PM}} </td>
+                <td> {{this.result.STATS_AAA.F_P_M.TOTAL_MOBI_FID_PM}} </td>
+              </tr>
+              <tr>
+                <td> Total</td>
+                <td> {{this.result.STATS_AAA.F_P_M.TOTAL_TEL_AMA_FID_PM}} </td>
+                <td> {{this.result.STATS_AAA.F_P_M.TOTAL_TEL_OPD_FID_PM}} </td>
+                <td> {{this.result.STATS_AAA.TOTAL_FID_PM }}</td>
+              </tr>
+            </table>
+            <table style="width: 100%;" id="result">
+              <tr>
+                <td> Priorité Fixe</td>
+              </tr>
+              <tr>
+                <td> Enrichissement</td>
+                <td> Amabis </td>
+                <td> OptinData </td>
+                <td> Total </td>
+              </tr>
+
+              <tr>
+                <td> Tél Fixe</td>
+                <td> {{this.result.STATS_AAA.F_P_F.AMA_FIXE_FID_PF}} </td>
+                <td> {{this.result.STATS_AAA.F_P_F.OPD_FIXE_FID_PF}} </td>
+                <td> {{this.result.STATS_AAA.F_P_F.TOTAL_FIXE_FID_PF}} </td>
+              </tr>
+              <tr>
+                <td> Mobile</td>
+                <td> {{this.result.STATS_AAA.F_P_F.AMA_MOBI_FID_PF}} </td>
+                <td> {{this.result.STATS_AAA.F_P_F.OPD_MOBI_FID_PF}} </td>
+                <td> {{this.result.STATS_AAA.F_P_F.TOTAL_MOBI_FID_PF}} </td>
+              </tr>
+              <tr>
+                <td> Total</td>
+                <td> {{this.result.STATS_AAA.F_P_F.TOTAL_TEL_AMA_FID_PF}} </td>
+                <td> {{this.result.STATS_AAA.F_P_F.TOTAL_TEL_OPD_FID_PF}} </td>
+                <td> {{this.result.STATS_AAA.TOTAL_FID_PF}}</td>
+              </tr>
+            </table>
+          </mat-card-content>
+        </mat-card>
+
+      </div>
+
+
+    </mat-card-content>
+    <mat-card-action align="end">
+      <div class="example-button-row">
+
+        <button mat-raised-button color="primary">Enrichir</button>
+        <button mat-raised-button color="accent" (click)="exportExcell()">Exporter</button>
+
+      </div>
+    </mat-card-action>
+  </mat-card>
+
+</div>

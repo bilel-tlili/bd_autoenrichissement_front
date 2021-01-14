@@ -1,0 +1,40 @@
+
+.container {
+   
+   
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.left-card {
+    flex : 33% ;
+    margin-left: 0.5% ;
+    margin-right: 0.5% ;
+}
+.right-card {
+    flex : 60% ;
+    margin-left: 0.5% ;
+    margin-right: 0.5% ;
+}
+.form-class{
+
+     width: 98%;
+     margin-left: 1%;
+     padding-top : 30px;
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: space-around;
+}
+.field-class {
+    flex-basis: 45%;
+    
+   
+   
+}
+
+table {
+  
+    width: 150%;
+  }
+

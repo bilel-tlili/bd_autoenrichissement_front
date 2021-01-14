@@ -1,0 +1,32 @@
+<page-header class="p-t-32 p-b-48 m-b--24 bg-gray-900"
+             [title]= "'profile.title'" 
+             [showBreadCrumb]="false">
+</page-header>
+
+<div fxLayout="row wrap" class="matero-row">
+  <div class="matero-col" fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="33.33" fxFlex.gt-md="25">
+    <mat-card>
+    
+      
+      <mat-nav-list class="m-x--16 m-b--16 m-t-16">
+        
+    
+        <mat-divider inset></mat-divider>
+        <a mat-list-item routerLink="/profile/overview">
+          <mat-icon color="secondary" class="icon-18 m-r-8">account_circle</mat-icon> {{'menu.profile.overview' | translate}}
+        </a>
+        <mat-divider inset></mat-divider>
+        <a mat-list-item routerLink="/profile/change-password">
+          <mat-icon class="icon-18 m-r-8">lock</mat-icon> {{'change-password.titles.title1' | translate}}
+        </a>
+        <mat-divider inset></mat-divider>
+        <a mat-list-item routerLink="/profile/settings">
+          <mat-icon class="icon-18 m-r-8">settings</mat-icon> {{'menu.profile.settings' | translate}}
+        </a>
+      </mat-nav-list>
+    </mat-card>
+  </div>
+  <div class="matero-col" fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="66.67" fxFlex.gt-md="75">
+    <router-outlet></router-outlet>
+  </div>
+</div>

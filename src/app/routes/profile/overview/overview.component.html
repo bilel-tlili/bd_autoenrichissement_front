@@ -1,0 +1,50 @@
+<!-- <div class="matero-col" fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="33.33" fxFlex.gt-md="52">
+    <mat-card>
+      <div class="text-center">
+        <img class="m-b-8 r-full" [src]="user.avatar" alt="" width="80">
+        <h2 class="m-t-0 m-b-8 f-w-400">{{ user.name }}</h2>
+        <p class="m-t-0 m-b-8">{{user.job}} - {{user.entreprise}} </p>
+        <p class="m-t-0 text-grey-500">{{user.email}}</p>
+        <p class="m-t-0 m-b-8">{{user.phone}}</p>
+       
+        
+      </div>
+      <mat-nav-list class="m-x--16 m-b--16 m-t-16">
+        <mat-divider inset></mat-divider>
+     
+       
+      </mat-nav-list>
+    </mat-card>
+  </div> -->
+
+  <div fxLayout="row" fxLayout.xs="column"  fxLayoutGap="32px">
+    <mat-card fxFlex="50%" >
+        <mat-card-subtitle>
+            {{'menu.profile.overview' | translate}}
+        </mat-card-subtitle>
+        <mat-divider></mat-divider>
+        <mat-card-content>
+           
+               
+              
+                <div class="text-center" style="padding :20px">
+                    <img class="m-b-8 r-full" [src]="user.avatar" alt="" width="100">
+                    <h2 class="m-t-0 m-b-8 f-w-400">{{ user.name }}</h2>
+                    <p class="m-t-0 m-b-8">{{user.job}} - {{user.entreprise}} </p>
+                    <p class="m-t-0 text-grey-500">{{user.email}}</p>
+                    <p class="m-t-0 m-b-8">{{user.phone}}</p>
+                   
+                    
+                  </div>
+               
+         
+        </mat-card-content>
+        <mat-divider></mat-divider>
+        
+    </mat-card>
+ 
+  
+</div>
+
+
+  

@@ -1,0 +1,151 @@
+{
+  "menu": {
+    "mesdemandes": "Mes Demandes",
+    "nouvelledemande": "Nouvelle Demande",
+    "dashboard": "Dashboard",
+    "historique": "Enrichissement",
+    "historique.mesdemandes": "Mes demandes",
+    "create-user" : "Utilisateurs",
+    
+    "profile": "Profile",
+    "profile.overview": "Aperçu",
+    "profile.settings": "Paramétres"
+   
+  },
+  "validations": {
+    "required": "Ce champs est obligatoire",
+    "minlength": "La longeur minimale est de {{number}} characters",
+    "maxlength": "La longeur maximale est de {{number}} characters",
+    "min": "This value should be more than {{number}}",
+    "max": "This value should be less than {{number}}",
+    "exist": "The {{value}} has exists",
+    "inconsistent": "Incompatible avec  {{value}}",
+    "invalid_email": "Invalid email"
+  },
+  
+  "profile" : {
+"title" : "Mon Profil"
+  },
+  "user": {
+    "profile": "profil",
+    "settings": "parametres",
+    "logout": "déconnexion"
+  },
+  "login": {
+    "title": "Connexion",
+    "username": "Email",
+    "password": "Mot de Passe",
+    "remember_me": "Se souvenir de moi",
+    "login": "Login",
+    "have_no_account": "Vous n'avez pas un compte",
+    "create_one": "Créer le ici",
+    "please_enter": "Merci de Taper votre"
+  },
+  "register": {
+    "welcome": "Welcome",
+    "title": "It only takes a few seconds to create your account",
+    "confirm_password": "Confirm Password",
+    "agree": "I have read and agree to the terms of service",
+    "have_an_account": "Already have an account",
+    "signin": "Sign in",
+    "register": "Create account"
+  },
+  
+  "change-password" : {
+    "titles" : {
+      "title1" : "Changer mon mot de passe"
+    },
+    "form" :  {
+      "password" : "Mot de passe actuel",
+      "repeatpassword" : " Retaper Mot de passe actuel",
+      "newpassword" : " Mon nouveau mot de passe"
+    }
+  }
+   ,
+  "create-user" : {
+    "form" : {
+      "lastname": "Nom de Famille",
+      "firstname": "Prénom",
+       "email": "Email",
+       "phone": "Téléphone",
+       "entreprise" : "Société",
+       "job" : "Poste",
+       "role" : "Rôle"
+    },
+    "titles" :{
+      "title1" : "Formulaire de Creation Utilisateur",
+      "title2" : "Liste des Utilisateurs"
+    },
+    "buttons" : {
+    "button1" : "Valider",
+    "button2" : "Réinitialiser"
+    }
+  },
+  "myorder" : {
+    "step1" :"Chargement Fichier",
+    "step2" :"Mappage Adresse",
+    "step3" :"Finalisation Demande",
+    "step4" :"Terminé" ,
+    "createorder" : "Créer Demande",
+    "form" : {
+      "intermediate" : "Intérmidiaire",
+      "client" : "Client",
+      "action_type" : "Type d'Action",
+      "media": "Média",
+      "enrichment_amabis" : "Enrichissement Amabis",
+      "tel_priority" :"Priorité Téléphone",
+      "topping" : "Toppage",
+      "audit" :"Audit",
+      "enrichment" : "Enrichissement",
+      "phone" : "Téléphone Fixe",
+      "mobile" : "Téléphone Mobile"  ,
+      "nopriority" : "Pas de Priorité" ,
+      "no" : "Non",
+      "yes" : "Oui",
+      "ph" : "Téléphone",
+      "email" : "Email"
+
+
+   },
+   "mapping" : {
+       "adress1" : "Civilité + Nom + Prénom",
+       "adress2" : "Complément du nom",
+       "adress3" : "Complément de rue",
+       "adress4":  "Num + Rue",
+       "adress5" :"Lieu dit",
+       "adress6" : "Code Postale + Commune"
+
+   }
+  } , 
+
+  "dialog" : {
+    "msg" : "Votre demande a été bien crée, vous allez recevoir un email une fois qu'elle est traitée!",
+    "close":" Fermer",
+    "gotoorder" : "Mes Demandes",
+    "title" : "Nouvelle Demande"
+  },
+  "next" :"Suivant",
+  "previous" : "Retour",
+   "reset" :"Réinitialiser",
+   "file_to_treat" : "Fichier à traiter",
+   "LoadFile" : "Charger Fichier",
+
+   "idusers" : "ID Utilisateur",
+   "email" : " Email",
+   "role" : "Rôle",
+   "societe" : "Sociéte",
+   "telephone": "Téléphone",
+   "nom" : "Nom de Famille",
+   "prenom" : "Prénom",
+   "titre" : "Titre",
+   "archive" : "Statut",
+   "order_id" :"ID Audit",
+   "id_users" :"ID Utilisateur",
+   "client": "Client",
+   "intermidiaire" : "Intermidiaire",
+   "operation" : "Opération",
+   "media":"Média",
+   "statut":"Statut",
+   "filename":"Nom Fichier",
+   "date_creation": "Date Création"
+}

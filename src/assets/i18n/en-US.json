@@ -1,0 +1,139 @@
+{
+  "menu": {
+    "mesdemandes": "My Orders",
+    "nouvelledemande": "New Order",
+    "dashboard": "Dashboard",
+    "profile.overview": "Overview",
+    "profile.settings": "Settings",
+    "create-user" : "Users"
+   
+  },
+  "validations": {
+    "required": "This field is required",
+    "minlength": "Should have atleast {{number}} characters",
+    "maxlength": "This value should be less than {{number}} characters",
+    "min": "This value should be more than {{number}}",
+    "max": "This value should be less than {{number}}",
+    "exist": "The {{value}} has exists",
+    "inconsistent": "Inconsistent with {{value}}",
+    "invalid_email": "Invalid email"
+  },
+  "user": {
+    "profile": "profile",
+    "settings": "settings",
+    "logout": "logout"
+  },
+  "login": {
+    "title": "Login",
+    "username": "E-mail",
+    "password": "Password",
+    "remember_me": "Remember Me",
+    "login": "Login",
+    "have_no_account": "Don't have an account",
+    "create_one": "Click here to create one",
+    "please_enter": "Please enter your"
+  },
+  "register": {
+    "welcome": "Welcome",
+    "title": "It only takes a few seconds to create your account",
+    "confirm_password": "Confirm Password",
+    "agree": "I have read and agree to the terms of service",
+    "have_an_account": "Already have an account",
+    "signin": "Sign in",
+    "register": "Create account"
+  },
+  "myorder" : {
+    "step1" :"Loading File",
+    "step2" :"Adress Mapping",
+    "step3" :"Order Finalizing",
+    "step4" :"Done",
+    "createorder" : "Create Order",
+    "form" : {
+       "intermediate" : "Intermediate",
+       "client" : "Client",
+       "action_type" : "Action Type",
+       "media": "Media",
+       "enrichment_amabis" : "Amabis Enrichment",
+       "tel_priority" :"Phone Priority",
+       "topping" : "Topping",
+       "audit" :"Audit",
+       "enrichment" : "Enrichment",
+       "phone" : "Phone",
+       "mobile" : "Mobile Phone"  ,
+       "nopriority" : "No Priority" ,
+       "no" : "No",
+       "yes" : "Yes",
+       "ph" : "Phone",
+       "email" : "E-mail"
+
+
+    } ,
+    "mapping" : {
+        "adress1" : "Civility + First Name + LastName",
+        "adress2" : "Genitive",
+        "adress3" : "Street supplement",
+        "adress4":  "Num + Street",
+        "adress5" :"Place said",
+        "adress6" : "ZIP code + Commune"
+ 
+    }
+  }, 
+  "change-password" : {
+    "titles" : {
+      "title1" : "Update My Password"
+    },
+    "form" :  {
+      "password" : "Current Password",
+      "repeatpassword" : " Repeat Current Password",
+      "newpassword" : " My new Password"
+    }
+  }
+   ,
+   "profile" : {
+"title" : "Personal Profile"
+   },
+  "create-user" : {
+    "form" : {
+      "lastname": "Last Name",
+      "firstname": "First Name",
+       "email": "E-mail",
+       "phone": "Phone",
+       "entreprise" : "Entreprise",
+       "job" : "Job",
+       "role" : "Role"
+    },
+    "titles" :{
+      "title1" : "Create User's Form",
+      "title2" : "List Of Users"
+    },
+    "buttons" : {
+    "button1" : "Confirm",
+    "button2" : "Reset"
+    }
+  },
+  "dialog" : {
+    "msg" : "Your request has been successfully created, you will receive an email once it is processed!",
+    "close":" Close",
+    "gotoorder" : "My Orders",
+    "title" : "New Order"
+  },
+   "next" :"Next",
+  "previous" : "Previous",
+   "reset" :"Reset",
+   "file_to_treat" : "File to treat",
+   "LoadFile" : "Upload File",
+   
+
+   "idusers" : " User ID",
+   "email" : " E-mail",
+   "role" : "Role",
+   "societe" : "Entreprise",
+   "telephone": "Phone",
+   "nom" : "Last Name",
+   "prenom" : "First Name",
+   "titre" : "Job",
+   "archive" : "Status"
+
+
+
+}

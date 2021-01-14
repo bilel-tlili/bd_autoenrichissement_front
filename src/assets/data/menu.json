@@ -1,0 +1,28 @@
+{
+  "menu": [
+    {
+      "route": "dashboard",
+      "name": "dashboard",
+      "type": "link",
+      "icon": "dashboard"
+    },
+    {
+      "route": "mesdemandes",
+      "name": "mesdemandes",
+      "type": "link",
+      "icon": "description"
+    },
+    {
+      "route": "nouvelledemande",
+      "name": "nouvelledemande",
+      "type": "link",
+      "icon": "create"
+    },
+    {
+      "route": "create-user",
+      "name": "create-user",
+      "type": "link",
+      "icon": "person"
+    }
+  ]
+}

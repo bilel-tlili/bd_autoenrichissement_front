@@ -1,0 +1,181 @@
+<breadcrumb></breadcrumb>
+
+   <mat-horizontal-stepper [linear]="true" #stepper>
+    <mat-step>
+        <form class="class-form" [formGroup]="formEnri">
+        <ng-template matStepLabel> {{'myorder.step1' | translate}} </ng-template>
+        <div class="form-table">
+            
+          
+            <input type="file" #fileInput name="fileUpload" accept=".csv"
+                   style="display:none;" />
+
+       
+
+            <mat-form-field class="example-full-width">
+                <mat-label>{{'file_to_treat' | translate}} </mat-label>
+                <input  matInput disabled matNativeControl  formControlName="filename"
+                       type="text">
+
+
+            </mat-form-field>
+            <button for="file" mat-button color="primary" (click)="upload_file()">
+                <mat-icon>file_upload</mat-icon>
+                {{'LoadFile' | translate}}
+            </button>
+ </div>
+</form>
+        <div> 
+        <button mat-button  (click)="reset()"  > </button>
+          <button mat-button matStepperNext (click)="showmappage()" [disabled]="this.formEnri.get('filename').value === ''" >{{'next' | translate}}</button>
+        </div>
+   
+    </mat-step>
+    <mat-step>
+   
+        <ng-template matStepLabel>{{'myorder.step2' | translate}}</ng-template>
+        <div *ngIf='showFile=== true'>
+
+            <!-- mapping Table -->
+
+ <div>
+      <table   mat-table [dataSource]="mappingDataSource" >
+       <!-- <ng-container [matColumnDef]="column" *ngFor="let column of mappingColumns">
+
+        
+         <th mat-header-cell *matHeaderCellDef> {{column | translate }} </th>
+         <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+       </ng-container> -->
+       <ng-container [matColumnDef]="column" *ngFor="let column of mappingColumns">
+        <div *ngIf="column != 'variable correspondante'">
+          <th mat-header-cell *matHeaderCellDef>
+            {{column | translate}} </th>
+          <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+        </div>
+        <div *ngIf="column ===  'variable correspondante'">
+          <th mat-header-cell *matHeaderCellDef>  {{column | translate}}</th>
+          <td mat-cell *matCellDef="let element">
+            
+            <mat-form-field >
+              <mat-label>Choisir une variable</mat-label>
+              <mat-select (onchange)="choisirCorrespondance(event,element)"> 
+               
+                <mat-option *ngFor="let variable of resultedColumns" [value]="variable">
+                  {{variable | translate}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+        </div>
+
+
+      </ng-container>
+       <tr mat-header-row *matHeaderRowDef="mappingColumns"></tr>
+       <tr mat-row *matRowDef="let row; columns: mappingColumns;"></tr>
+     </table> 
+     <mat-paginator [pageSizeOptions]="[5, 10, 15 ,20]" [length]="resultsLength"  showFirstLastButtons></mat-paginator>
+   </div>
+  
+  
+         
+        </div>
+        <div>
+          <button mat-button matStepperPrevious>{{'previous' | translate}}</button>
+          <button mat-button matStepperNext [disabled]='!validmapping()' (click)="confirm()" >{{'next' | translate}}</button>
+        </div>
+
+    </mat-step>
+    <mat-step>
+        <form class="example-form" [formGroup]="formEnri" >
+        <ng-template matStepLabel>{{'myorder.step3' | translate}}</ng-template>
+     
+            <table class="example-full-width" cellspacing="0"><tr>
+              <td><mat-form-field class="example-full-width">
+                <mat-label>{{'myorder.form.client' | translate}} </mat-label>
+                <input matInput matNativeControl required   name="client"  formControlName="client"  placeholder="AAA-DATA">
+              </mat-form-field></td>
+              <td><mat-form-field class="example-full-width">
+                <mat-label>{{'myorder.form.intermediate' | translate}}</mat-label>
+                <input   matNativeControl required matInput   name="intermidiaire"  formControlName="intermidiaire" placeholder="BDMR">
+              </mat-form-field></td>
+            </tr></table>
+      
+            <table class="example-full-width" cellspacing="0"><tr>
+                <td>
+              <mat-form-field class="example-full-width">
+                <mat-label>{{'myorder.form.action_type' | translate}}</mat-label>
+              <select name="action"   formControlName="action"  matNativeControl required>
+                    <option value="A">{{'myorder.form.audit' | translate}}</option>
+                    <option disabled value="E">{{'myorder.form.enrichment' | translate}}</option>
+                    <option disabled value="T">{{'myorder.form.topping' | translate}}</option>
+      
+                  </select>
+              </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>{{'myorder.form.media' | translate}}</mat-label>
+                    <select   name="cible"  formControlName="cible"   matNativeControl required>
+      
+                        <option value="email">{{'myorder.form.email' | translate}}</option>
+                        <option selected value="telephone">{{'myorder.form.ph' | translate}}</option>
+      
+                      </select>
+                  </mat-form-field>
+                </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-form-field class="example-full-width" *ngIf="this.formEnri.get('cible').value == 'telephone'" >
+                        <mat-label>{{'myorder.form.enrichment_amabis' | translate}}</mat-label>
+                        <select   name="Amabis"  formControlName="Amabis"   matNativeControl required>
+      
+                            <option value="-A">{{'myorder.form.yes' | translate}}</option>
+                            <option selected value="">{{'myorder.form.no' | translate}}</option>
+      
+                          </select>
+                      </mat-form-field>
+                    </td>
+                    <td>
+                      <mat-form-field class="example-full-width" *ngIf="this.formEnri.get('cible').value == 'telephone' && this.formEnri.get('action').value =='E'" >
+                          <mat-label>{{'myorder.form.tel_priority' | translate}}</mat-label>
+                          <select   name="priorite"  formControlName="priorite"   matNativeControl required>
+      
+                              <option value="fixe">{{'myorder.form.phone' | translate}}</option>
+                              <option value="mobile">{{'myorder.form.mobile' | translate}}</option>
+                              <option  selected value="non">{{'myorder.form.nopriority' | translate}}</option>
+      
+                            </select>
+                        </mat-form-field>
+                      </td>
+                </tr>
+                </table>
+      
+      
+            </form>
+       
+        <div>
+          <button mat-button matStepperPrevious>{{'previous' | translate}}</button>
+          <button mat-button matStepperNext [disabled]="!formEnri.valid"  (click)="confirm()" >{{'next' | translate}}</button>
+        </div>
+
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>{{'myorder.step4' | translate}}</ng-template>
+     
+     
+      <div>
+        <button end mat-button (click)="stepper.reset()">{{'reset' | translate}}</button>
+        <button mat-button  (click)="startEnrichiment()" >{{'myorder.createorder' | translate}}</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+
+
+
+
+
+
+
+
+
